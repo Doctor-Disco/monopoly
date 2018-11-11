@@ -84,7 +84,6 @@ for _ in range(100):
         elif card = "GOTO_MAYFAIR":
             position = 39
 
-
     elif board[position] == "COMM_CHEST":
         pass
     elif board[position] == "GO_TO_JAIL":
