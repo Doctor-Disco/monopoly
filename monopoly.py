@@ -21,8 +21,8 @@ def advance(steps):
     position = (position + steps) % 40
 
 def get_comm_deck():
-    community_chest_cards = list(community_chest_master)
-    random.shuffle(community_chest_cards)
+    comm_cards = list(community_chest_master)
+    random.shuffle(comm_cards)
     return iter(comm_cards)
 
 def get_chance_deck():
@@ -43,8 +43,8 @@ for _ in range(100):
         continue
 
     total, double = roll_dice()
-    num_double += 1 if double else 0
-    if num_double == 3:
+    num_doubles += 1 if double else 0
+    if num_doubles == 3:
         position = 10 # Jail
         in_jail = True
         if num_goojf_cards:
@@ -63,25 +63,25 @@ for _ in range(100):
             position = 0 
         elif card == "GOTO_TRAFALGAR":
             position = 24
-        elif card = "GOTO_PALL_MALL":
+        elif card == "GOTO_PALL_MALL":
             position = 11
-        elif card = "GOTO_NEXT_UTILILTY":
+        elif card == "GOTO_NEXT_UTILILTY":
             while not board[position].startswith("UTIL"):
                 advance(1)
-        elif card = "GOTO_NEXT_STATION":
+        elif card == "GOTO_NEXT_STATION":
             while not board[position].endswith("STATION"):
                 advance(1)
-        elif card = "GET_OUT_OF_JAIL_FREE":
+        elif card == "GET_OUT_OF_JAIL_FREE":
             num_goojf_cards += 1
-        elif card = "GO_BACK_3":
+        elif card == "GO_BACK_3":
             advance(-3)
-        elif card = "GO_TO_JAIL":
+        elif card == "GO_TO_JAIL":
             position = 10
             in_jail = True
             num_doubles = 0
-        elif card = "GOTO_KINGS_X":
+        elif card == "GOTO_KINGS_X":
             position = 5
-        elif card = "GOTO_MAYFAIR":
+        elif card == "GOTO_MAYFAIR":
             position = 39
 
     elif board[position] == "COMM_CHEST":
